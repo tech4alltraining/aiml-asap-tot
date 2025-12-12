@@ -1,7 +1,15 @@
 
 # 🎓 Logistic Regression Essentials
 <!-- Author & Affiliation -->
+
+<small>
 Ajvad Haneef, Senior Research Fellow, Department of Computer Science & Engineering, NIT Calicut
+</small>
+
+---
+
+<!-- Infographics: logistic_regression_info.png -->
+![Logistic Regression](images/logistic_regression_info.png)
 
 ## 🎯 What is Logistic Regression?
 

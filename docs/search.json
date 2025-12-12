@@ -98,16 +98,5 @@
     "title": "About Me",
     "section": "",
     "text": "I’m a second year Computer Science and Engineering student doing minor in Computational Mathematics with a passion for pushing the boundaries of knowledge in AI. With a strong background in Computer Science, my research focuses on Practive Oriented AI, aiming to contribute to meaningful advancements and solutions."
-  },
-  {
-    "objectID": "logistic.html#ajvad-haneef-senior-research-fellow-department-of-computer-science-engineering-nit-calicut",
-    "href": "logistic.html#ajvad-haneef-senior-research-fellow-department-of-computer-science-engineering-nit-calicut",
-    "title": "🎓 Logistic Regression Essentials",
-    "section": "",
-    "text": "## 🎯 What is Logistic Regression?\nLogistic Regression is one of the most fundamental and widely used algorithms for classification tasks in Machine Learning.\n\nLinear Regression predicts a continuous value (like house price, temperature).\nLogistic Regression predicts a category or probability (like: Will this customer click an ad? Yes/No. Is this email spam? Yes/No).\n\nThe key idea is that instead of predicting the value \\(Y\\) itself, Logistic Regression predicts the probability \\(P(Y=1)\\) that a given input belongs to a certain class. It then uses a special function, called the Sigmoid Function to squash any output into a probability score between 0 and 1. The Sigmoid Function is defined as:\n\\(P(Y=1) = \\frac{1}{1 + e^{-(X \\cdot W)}}\\) ,\nThe Sigmoid function takes the linear combination of input features (\\(X\\)) and weights (\\(W\\)) and transforms it into a probability.\nThe output can then be thresholded (commonly at 0.5) to make a binary classification decision:\n\nIf \\(P(Y=1) \\geq 0.5\\), predict class 1 (YES).\nIf \\(P(Y=1) &lt; 0.5\\), predict class 0 (NO).\n\nThe Sigmoid function has an “S”-shaped curve that smoothly transitions from 0 to 1, making it ideal for modeling probabilities.\nThe logistic curve is shown below: \n\n\nImagine a “Probability Gatekeeper” with a dial that can only point to values between 0 and 1.\n\nA standard Linear Regression model first calculates a raw score for a data point (this score can be any number, e.g., \\(-10\\), \\(0\\), \\(50\\)). This is the input to the Gatekeeper.\nThe Gatekeeper (the Sigmoid Function) takes this raw score and transforms it:\n\nVery large positive scores get turned into a probability close to \\(\\mathbf{1}\\) (High Confidence: YES).\nVery large negative scores get turned into a probability close to \\(\\mathbf{0}\\) (High Confidence: NO).\nA score of \\(\\mathbf{0}\\) gets turned into a probability of \\(\\mathbf{0.5}\\) (Uncertain).\n\n\nThis transformation allows us to use a linear model for a non-linear classification problem.",
-    "crumbs": [
-      "Home",
-      "Logistic Regression"
-    ]
   }
 ]

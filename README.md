@@ -1,4 +1,4 @@
-## Assigments
+## Assignments
 ---
 <!-- Open in new tab -->
 #### Session 1 - Four Pillars of AI 

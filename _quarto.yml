@@ -8,7 +8,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: logistic.qmd
+      - href: /pages/slt/logistic-regression/index.qmd
         text: Logistic Regression
   sidebar:
     style: "docked"
@@ -18,7 +18,7 @@ website:
     contents:
       - icon: logistic
         text: Logistic Regression
-        href: logistic.qmd
+        href: /pages/slt/logistic-regression/index.qmd
   announcement: 
     icon: info-circle
     dismissable: true

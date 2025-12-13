@@ -1,7 +1,0 @@
----
-title: "Papers"
----
-
-### 2024
-
-- Researcher (2024). A very Cool AI Paper. arXiv 2402.10951.

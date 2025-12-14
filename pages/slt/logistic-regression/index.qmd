@@ -1,10 +1,9 @@
 
+#### Session 1 | Assignment 1 | Elevator Pitch : Logistic Regression
 # 🎓 Logistic Regression Essentials
 <!-- Author & Affiliation -->
 
-<small>
-Ajvad Haneef, Senior Research Fellow, Department of Computer Science & Engineering, NIT Calicut
-</small>
+
 
 ---
 

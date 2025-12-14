@@ -1,4 +1,4 @@
-#### Session 2: Assignment 1 - The Geometric Interpreter
+#### Session 2 | Assignment 1 | The Geometric Interpreter
 
 # 🎓 Support Vector Machines (SVM) and Linear Algebra
 

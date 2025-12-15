@@ -1,0 +1,139 @@
+
+#### Session 2 | Assignment 2 | The Analogy Architect
+
+![analogy-1](images/analogy-1.jpg)
+
+## 1. **Matrix Multiplication – The Outfit Designer Story**
+
+
+> *You’re helping a school design outfits for different events: sports day, annual day, and farewell. You have shirts, pants, and shoes in different colors.*  
+
+ 
+> “We can think of the clothes as numbers in a list — like a vector — and the outfit designer’s plan as a matrix.”  
+
+Let’s define:  
+$\text{Vector of available clothes:} v = \begin{bmatrix} 2 \\ 3 \\ 1 \end{bmatrix}$
+
+(where 2 shirts, 3 pants, and 1 pair of shoes are available).  
+
+And the *style matrix* for creating different outfits:  
+$M = \begin{bmatrix}
+1 & 0 & 1 \\   % sports outfit
+0 & 1 & 1 \\   % annual day outfit
+1 & 1 & 0      % farewell outfit
+\end{bmatrix}$
+
+- Row 1 = Sports outfit uses 1 shirt + 0 pant + 1 shoe.  
+- Row 2 = Annual outfit uses 0 shirt + 1 pant + 1 shoe.  
+- Row 3 = Farewell outfit uses 1 shirt + 1 pant + 0 shoe.  
+
+**Matrix multiplication:**  
+$M \times v = 
+\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+2 \\ 3 \\ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+(1×2 + 0×3 + 1×1) \\ 
+(0×2 + 1×3 + 1×1) \\ 
+(1×2 + 1×3 + 0×1)
+\end{bmatrix}
+=
+\begin{bmatrix}
+3 \\ 4 \\ 5
+\end{bmatrix}
+$
+
+ 
+> “This means we can make 3 sports outfits, 4 annual day outfits, and 5 farewell outfits. The matrix acted like a recipe book that transformed our list of clothes into finished outfits.”
+
+***
+
+## 2. **Eigenvectors and Eigenvalues – The Stretchy Line Story**
+
+ 
+> *Imagine you draw lines on a rubber sheet — one horizontal, one diagonal. Now you stretch the sheet by pulling it rightward.*  
+
+
+> “Some lines will twist and tilt, but one or two special lines won’t turn direction; they only get longer or shorter.”  
+
+We can represent the transformation as:  
+$A = \begin{bmatrix} 2 & 0 \\ 0 & 1 \end{bmatrix}$
+
+This means x-values are doubled, but y-values stay the same.
+
+For a vector along the x-axis:  
+$v_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+
+then  
+
+$A v_1 = \begin{bmatrix} 2 \\ 0 \end{bmatrix} = 2 v_1$
+
+Thus, $v_1$ doesn’t change direction — only its length doubles. Its **eigenvalue** is $2$.  
+
+For a vector along the y-axis:  
+$v_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+then  
+$A.v_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix} = 1 v_2$
+
+Here, the direction stays the same, and the **eigenvalue** is $1$.  
+
+**Teacher explains:**  
+> “The eigenvectors are the lines that don’t rotate when stretched, only change in size. The eigenvalues tell how much each line grows or shrinks.”
+
+***
+
+## 3. **Dimensionality Reduction – The Shadow Story**
+
+
+> *You have a 3D toy (a cube) lit by a lamp. Its shadow falls on the wall — a 2D picture that keeps most of the cube’s shape.*  
+
+
+> “When we look at the shadow, we’re reducing a 3D object to 2D, keeping its most important features.”  
+
+Let’s imagine three points on the cube in 3D space:
+
+$P_1 = (1, 2, 3), \quad P_2 = (2, 3, 4), \quad P_3 = (3, 5, 6)$
+
+To project onto a 2D plane (ignore the z-axis):
+
+$\text{Projection matrix } 
+P = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{bmatrix}$
+
+Then:
+
+$P \times 
+\begin{bmatrix}
+1 \\ 2 \\ 3
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\ 2
+\end{bmatrix},
+\quad
+P \times
+\begin{bmatrix}
+2 \\ 3 \\ 4
+\end{bmatrix}=
+\begin{bmatrix}
+2 \\ 3
+\end{bmatrix},
+\quad
+P \times
+\begin{bmatrix}
+3 \\ 5 \\ 6
+\end{bmatrix}=
+\begin{bmatrix}
+3 \\ 5
+\end{bmatrix}$
+
+> “The shadow keeps the main structure — how points relate — but loses some details (depth). That’s exactly what dimensionality reduction like PCA does: it keeps the most useful parts and drops unnecessary ones.”
+
+***

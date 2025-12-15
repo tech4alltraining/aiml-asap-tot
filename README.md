@@ -3,8 +3,8 @@
 - ✅ Assignment 1: [Elevator Pitch : Logistic Regression](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/logistic-regression/) 
 #### Session 2: Language of AI
 - ✅ Assignment 1: [The Geometric Interpreter](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/svm/)
-- ⏳ Assignment 2: The Analogy Architect
-- ⏳ Assignment 3: The Connection Map
+- ✅ Assignment 2: [The Analogy Architect](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/linear-algebra/analogy-1.qmd)
+- ✅ Assignment 3: [The Connection Map](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/linear-algebra/connection-map.qmd)
 #### Session 3: Engine of Learning
 - ⏳ Assignment 1: The Gradient Explorer
 - ⏳ Assignment 2: The Backpropagation Storyteller

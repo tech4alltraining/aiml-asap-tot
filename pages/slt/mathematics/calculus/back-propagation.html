@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>analogy-1 – AIML Course</title>
+<title>back-propagation – AIML Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../pages/slt/mathematics/linear-algebra/analogy-1.html">Analogies LA</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../pages/slt/mathematics/calculus/back-propagation.html">Backpropagation Storyteller</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,7 +179,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../pages/slt/mathematics/linear-algebra/analogy-1.html" class="sidebar-item-text sidebar-link active"><i class="bi bi-backpack-fill" role="img">
+  <a href="../../../../pages/slt/mathematics/linear-algebra/analogy-1.html" class="sidebar-item-text sidebar-link"><i class="bi bi-backpack-fill" role="img">
 </i> 
  <span class="menu-text">Analogies LA</span></a>
   </div>
@@ -200,7 +200,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../pages/slt/mathematics/calculus/back-propagation.html" class="sidebar-item-text sidebar-link"><i class="bi bi-book-half" role="img">
+  <a href="../../../../pages/slt/mathematics/calculus/back-propagation.html" class="sidebar-item-text sidebar-link active"><i class="bi bi-book-half" role="img">
 </i> 
  <span class="menu-text">Backpropagation Storyteller</span></a>
   </div>
@@ -215,9 +215,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#matrix-multiplication-the-outfit-designer-story" id="toc-matrix-multiplication-the-outfit-designer-story" class="nav-link active" data-scroll-target="#matrix-multiplication-the-outfit-designer-story">1. <strong>Matrix Multiplication – The Outfit Designer Story</strong></a></li>
-  <li><a href="#eigenvectors-and-eigenvalues-the-stretchy-line-story" id="toc-eigenvectors-and-eigenvalues-the-stretchy-line-story" class="nav-link" data-scroll-target="#eigenvectors-and-eigenvalues-the-stretchy-line-story">2. <strong>Eigenvectors and Eigenvalues – The Stretchy Line Story</strong></a></li>
-  <li><a href="#dimensionality-reduction-the-shadow-story" id="toc-dimensionality-reduction-the-shadow-story" class="nav-link" data-scroll-target="#dimensionality-reduction-the-shadow-story">3. <strong>Dimensionality Reduction – The Shadow Story</strong></a></li>
+  <li><a href="#the-backpropagation-story-passing-the-blame" id="toc-the-backpropagation-story-passing-the-blame" class="nav-link active" data-scroll-target="#the-backpropagation-story-passing-the-blame">The Backpropagation Story: “Passing the Blame”</a>
+  <ul class="collapse">
+  <li><a href="#the-scenario-the-mini-neural-network" id="toc-the-scenario-the-mini-neural-network" class="nav-link" data-scroll-target="#the-scenario-the-mini-neural-network">The Scenario: The Mini Neural Network</a></li>
+  <li><a href="#step-1-the-forward-pass-making-the-product" id="toc-step-1-the-forward-pass-making-the-product" class="nav-link" data-scroll-target="#step-1-the-forward-pass-making-the-product">Step 1: The Forward Pass (Making the Product)</a></li>
+  <li><a href="#step-2-the-backward-pass-assigning-the-blame" id="toc-step-2-the-backward-pass-assigning-the-blame" class="nav-link" data-scroll-target="#step-2-the-backward-pass-assigning-the-blame">Step 2: The Backward Pass (Assigning the Blame)</a></li>
+  <li><a href="#step-3-the-update-fixing-the-machines" id="toc-step-3-the-update-fixing-the-machines" class="nav-link" data-scroll-target="#step-3-the-update-fixing-the-machines">Step 3: The Update (Fixing the Machines)</a></li>
+  <li><a href="#summary-of-the-story" id="toc-summary-of-the-story" class="nav-link" data-scroll-target="#summary-of-the-story">Summary of the Story</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -227,134 +232,131 @@ window.Quarto = {
 
 
 
-<section id="session-2-assignment-2-the-analogy-architect" class="level4">
-<h4 class="anchored" data-anchor-id="session-2-assignment-2-the-analogy-architect">Session 2 | Assignment 2 | The Analogy Architect</h4>
+<section id="session-3-assignment-2-the-backpropagation-storyteller" class="level4">
+<h4 class="anchored" data-anchor-id="session-3-assignment-2-the-backpropagation-storyteller">Session 3 | Assignment 2| The Backpropagation Storyteller</h4>
+</section>
+<section id="the-backpropagation-story-passing-the-blame" class="level1">
+<h1>The Backpropagation Story: “Passing the Blame”</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/analogy-1.jpg" class="img-fluid figure-img"></p>
-<figcaption>analogy-1</figcaption>
+<p><img src="images/back-propagation.png" class="img-fluid figure-img"></p>
+<figcaption>back-propagation</figcaption>
 </figure>
 </div>
-</section>
-<section id="matrix-multiplication-the-outfit-designer-story" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-multiplication-the-outfit-designer-story">1. <strong>Matrix Multiplication – The Outfit Designer Story</strong></h2>
-<blockquote class="blockquote">
-<p><em>You’re helping a school design outfits for different events: sports day, annual day, and farewell. You have shirts, pants, and shoes in different colors.</em></p>
-</blockquote>
-<blockquote class="blockquote">
-<p>“We can think of the clothes as numbers in a list — like a vector — and the outfit designer’s plan as a matrix.”</p>
-</blockquote>
-<p>Let’s define:<br>
-<span class="math inline">\(\text{Vector of available clothes:} v = \begin{bmatrix} 2 \\ 3 \\ 1 \end{bmatrix}\)</span></p>
-<p>(where 2 shirts, 3 pants, and 1 pair of shoes are available).</p>
-<p>And the <em>style matrix</em> for creating different outfits:<br>
-<span class="math inline">\(M = \begin{bmatrix}
-1 &amp; 0 &amp; 1 \\   % sports outfit
-0 &amp; 1 &amp; 1 \\   % annual day outfit
-1 &amp; 1 &amp; 0      % farewell outfit
-\end{bmatrix}\)</span></p>
+<section id="the-scenario-the-mini-neural-network" class="level3">
+<h3 class="anchored" data-anchor-id="the-scenario-the-mini-neural-network">The Scenario: The Mini Neural Network</h3>
+<p>Imagine a tiny factory (Neural Network) that takes two raw ingredients (Inputs) and tries to produce a specific alloy (Output).</p>
+<p><strong>The Architecture:</strong></p>
 <ul>
-<li>Row 1 = Sports outfit uses 1 shirt + 0 pant + 1 shoe.<br>
-</li>
-<li>Row 2 = Annual outfit uses 0 shirt + 1 pant + 1 shoe.<br>
-</li>
-<li>Row 3 = Farewell outfit uses 1 shirt + 1 pant + 0 shoe.</li>
+<li><strong>Input Layer:</strong> 2 Neurons (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>)</li>
+<li><strong>Hidden Layer:</strong> 1 Neuron (<span class="math inline">\(h_1\)</span>) with a Sigmoid activation.</li>
+<li><strong>Output Layer:</strong> 1 Neuron (<span class="math inline">\(y_{pred}\)</span>) with a Sigmoid activation.</li>
+<li><strong>Goal:</strong> For inputs <strong><span class="math inline">\(x_1=0.5, x_2=1.0\)</span></strong>, we want the output to be <strong>1.0</strong>.</li>
 </ul>
-<p><strong>Matrix multiplication:</strong><br>
-<span class="math inline">\(M \times v =
-\begin{bmatrix}
-1 &amp; 0 &amp; 1 \\
-0 &amp; 1 &amp; 1 \\
-1 &amp; 1 &amp; 0
-\end{bmatrix}
-\begin{bmatrix}
-2 \\ 3 \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
-(1×2 + 0×3 + 1×1) \\
-(0×2 + 1×3 + 1×1) \\
-(1×2 + 1×3 + 0×1)
-\end{bmatrix}
-=
-\begin{bmatrix}
-3 \\ 4 \\ 5
-\end{bmatrix}\)</span></p>
+<hr>
+</section>
+<section id="step-1-the-forward-pass-making-the-product" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-the-forward-pass-making-the-product">Step 1: The Forward Pass (Making the Product)</h3>
+<p><em>The factory runs a test batch to see what it currently produces.</em></p>
+<p><strong>1. Initial Weights (Randomly Assigned):</strong></p>
+<ul>
+<li>Weights from Input to Hidden: <span class="math inline">\(w_1 = 0.5\)</span>, <span class="math inline">\(w_2 = 0.5\)</span></li>
+<li>Weight from Hidden to Output: <span class="math inline">\(w_3 = 1.0\)</span></li>
+</ul>
+<p><strong>2. Hidden Layer Calculation:</strong></p>
+<ul>
+<li><strong>Weighted Sum (<span class="math inline">\(z_1\)</span>):</strong></li>
+</ul>
+<p><span class="math inline">\(z_1 = (x_1 \cdot w_1) + (x_2 \cdot w_2) = (0.5 \cdot 0.5) + (1.0 \cdot 0.5) = 0.25 + 0.5 = 0.75\)</span></p>
+<ul>
+<li><strong>Activation (<span class="math inline">\(h_1\)</span>):</strong> We apply the Sigmoid function (squashing the value).</li>
+</ul>
+<p><span class="math inline">\(h_1 = \frac{1}{1 + e^{-z_1}} = \frac{1}{1 + e^{-0.75}} \approx 0.68\)</span></p>
+<p><strong>3. Output Layer Calculation:</strong></p>
+<ul>
+<li><strong>Weighted Sum (<span class="math inline">\(z_2\)</span>):</strong></li>
+</ul>
+<p><span class="math inline">\(z_2 = h_1 \cdot w_3 = 0.68 \cdot 1.0 = 0.68\)</span></p>
+<ul>
+<li><strong>Final Prediction (<span class="math inline">\(y_{pred}\)</span>):</strong></li>
+</ul>
+<p><span class="math inline">\(y_{pred} = \frac{1}{1 + e^{-z_2}} = \frac{1}{1 + e^{-0.68}} \approx 0.66\)</span></p>
+<p><strong>4. The Error (The Loss Function):</strong></p>
+<ul>
+<li><strong>Target:</strong> 1.0</li>
+<li><strong>Actual:</strong> 0.66</li>
+<li><strong>Loss (MSE):</strong> <span class="math inline">\(L = \frac{1}{2} (Target - Prediction)^2 = \frac{1}{2} (1.0 - 0.66)^2 = \frac{1}{2} (0.34)^2 = 0.058\)</span></li>
+</ul>
 <blockquote class="blockquote">
-<p>“This means we can make 3 sports outfits, 4 annual day outfits, and 5 farewell outfits. The matrix acted like a recipe book that transformed our list of clothes into finished outfits.”</p>
+<p><strong>The Story:</strong> The factory manager looks at the product. “We wanted a 1.0 quality alloy, but we got 0.66. This is a failure. Who is responsible?”</p>
 </blockquote>
 <hr>
 </section>
-<section id="eigenvectors-and-eigenvalues-the-stretchy-line-story" class="level2">
-<h2 class="anchored" data-anchor-id="eigenvectors-and-eigenvalues-the-stretchy-line-story">2. <strong>Eigenvectors and Eigenvalues – The Stretchy Line Story</strong></h2>
+<section id="step-2-the-backward-pass-assigning-the-blame" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-the-backward-pass-assigning-the-blame">Step 2: The Backward Pass (Assigning the Blame)</h3>
+<p><em>Now we travel backward from the output to find out how to adjust the machines (weights).</em></p>
+<section id="phase-a-blaming-the-output-weight-w_3" class="level4">
+<h4 class="anchored" data-anchor-id="phase-a-blaming-the-output-weight-w_3"><strong>Phase A: Blaming the Output Weight (<span class="math inline">\(w_3\)</span>)</strong></h4>
+<p>We need to calculate $ : “How much did Weight 3 contribute to the error?”</p>
+<p>We use the <strong>Chain Rule</strong> to break this into three simple links:</p>
+<ol type="1">
+<li><strong>How did the Loss change as the Prediction changed?</strong></li>
+</ol>
+<p><span class="math inline">\(\frac{\partial Loss}{\partial y_{pred}} = -(Target - y_{pred}) = -(1.0 - 0.66) = -0.34\)</span> <em>(Interpretation: We need the output to be higher.)</em> 2. <strong>How did the Prediction change as the Input Sum (<span class="math inline">\(z_2\)</span>) changed?</strong> (Sigmoid Derivative)</p>
+<p><span class="math inline">\(\frac{\partial y_{pred}}{\partial z_2} = y_{pred} \cdot (1 - y_{pred}) = 0.66 \cdot (1 - 0.66) \approx 0.2244\)</span></p>
+<ol start="3" type="1">
+<li><strong>How did the Input Sum (<span class="math inline">\(z_2\)</span>) change as Weight 3 changed?</strong></li>
+</ol>
+<p><span class="math inline">\(\frac{\partial z_2}{\partial w_3} = h_1 = 0.68\)</span></p>
+<p><strong>The Chain Rule Assembly:</strong></p>
+<p><span class="math inline">\(Gradient_{w_3} = \frac{\partial Loss}{\partial w_3} = \frac{\partial Loss}{\partial y_{pred}} \cdot \frac{\partial y_{pred}}{\partial z_2} \cdot \frac{\partial z_2}{\partial w_3}\)</span></p>
+<p><span class="math inline">\(= -0.34 \cdot 0.2244 \cdot 0.68 \approx -0.0518\)</span></p>
 <blockquote class="blockquote">
-<p><em>Imagine you draw lines on a rubber sheet — one horizontal, one diagonal. Now you stretch the sheet by pulling it rightward.</em></p>
+<p><strong>The Story:</strong> “Weight 3, you are partly to blame. If we increase you, the error will go down.”</p>
 </blockquote>
-<blockquote class="blockquote">
-<p>“Some lines will twist and tilt, but one or two special lines won’t turn direction; they only get longer or shorter.”</p>
-</blockquote>
-<p>We can represent the transformation as:<br>
-<span class="math inline">\(A = \begin{bmatrix} 2 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</span></p>
-<p>This means x-values are doubled, but y-values stay the same.</p>
-<p>For a vector along the x-axis:<br>
-<span class="math inline">\(v_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}\)</span></p>
-<p>then</p>
-<p><span class="math inline">\(A v_1 = \begin{bmatrix} 2 \\ 0 \end{bmatrix} = 2 v_1\)</span></p>
-<p>Thus, <span class="math inline">\(v_1\)</span> doesn’t change direction — only its length doubles. Its <strong>eigenvalue</strong> is <span class="math inline">\(2\)</span>.</p>
-<p>For a vector along the y-axis:<br>
-<span class="math inline">\(v_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}\)</span> then<br>
-<span class="math inline">\(A.v_2 = \begin{bmatrix} 0 \\ 1 \end{bmatrix} = 1 v_2\)</span></p>
-<p>Here, the direction stays the same, and the <strong>eigenvalue</strong> is <span class="math inline">\(1\)</span>.</p>
-<p><strong>Teacher explains:</strong><br>
-&gt; “The eigenvectors are the lines that don’t rotate when stretched, only change in size. The eigenvalues tell how much each line grows or shrinks.”</p>
 <hr>
 </section>
-<section id="dimensionality-reduction-the-shadow-story" class="level2">
-<h2 class="anchored" data-anchor-id="dimensionality-reduction-the-shadow-story">3. <strong>Dimensionality Reduction – The Shadow Story</strong></h2>
-<blockquote class="blockquote">
-<p><em>You have a 3D toy (a cube) lit by a lamp. Its shadow falls on the wall — a 2D picture that keeps most of the cube’s shape.</em></p>
-</blockquote>
-<blockquote class="blockquote">
-<p>“When we look at the shadow, we’re reducing a 3D object to 2D, keeping its most important features.”</p>
-</blockquote>
-<p>Let’s imagine three points on the cube in 3D space:</p>
-<p><span class="math inline">\(P_1 = (1, 2, 3), \quad P_2 = (2, 3, 4), \quad P_3 = (3, 5, 6)\)</span></p>
-<p>To project onto a 2D plane (ignore the z-axis):</p>
-<p><span class="math inline">\(\text{Projection matrix }
-P = \begin{bmatrix}
-1 &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; 0
-\end{bmatrix}\)</span></p>
-<p>Then:</p>
-<p><span class="math inline">\(P \times
-\begin{bmatrix}
-1 \\ 2 \\ 3
-\end{bmatrix} =
-\begin{bmatrix}
-1 \\ 2
-\end{bmatrix},
-\quad
-P \times
-\begin{bmatrix}
-2 \\ 3 \\ 4
-\end{bmatrix}=
-\begin{bmatrix}
-2 \\ 3
-\end{bmatrix},
-\quad
-P \times
-\begin{bmatrix}
-3 \\ 5 \\ 6
-\end{bmatrix}=
-\begin{bmatrix}
-3 \\ 5
-\end{bmatrix}\)</span></p>
-<blockquote class="blockquote">
-<p>“The shadow keeps the main structure — how points relate — but loses some details (depth). That’s exactly what dimensionality reduction like PCA does: it keeps the most useful parts and drops unnecessary ones.”</p>
-</blockquote>
+<section id="phase-b-passing-the-blame-back-to-w_1-and-w_2" class="level4">
+<h4 class="anchored" data-anchor-id="phase-b-passing-the-blame-back-to-w_1-and-w_2"><strong>Phase B: Passing the Blame Back (To <span class="math inline">\(w_1\)</span> and <span class="math inline">\(w_2\)</span>)</strong></h4>
+<p>This is the “Back” in Backpropagation. The output layer neuron yells at the hidden neuron: <em>“I only gave the wrong answer because YOU gave me the wrong input!”</em></p>
+<p>We need $ $ and $ $. The Chain Rule gets longer:</p>
+<ol type="1">
+<li><strong>The “Upstream Gradient” (Blame from the Output):</strong> We already calculated the error sensitivity at the output sum: <span class="math inline">\((-0.34 \cdot 0.2244)=-0.075\)</span>. Now we multiply it by the weight connecting them (<span class="math inline">\(w_3\)</span>) to bring the error back to the hidden node.</li>
+</ol>
+<p>Error at <span class="math inline">\(h_1\)</span> = <span class="math inline">\(-0.075 \cdot w_3 = -0.075 \cdot 1.0 = -0.075\)</span></p>
+<ol type="1">
+<li><p><strong>How did Hidden Output (<span class="math inline">\(h_1\)</span>) change as Hidden Sum (<span class="math inline">\(z_1\)</span>) changed?</strong> (Sigmoid Derivative again) <span class="math inline">\(\frac{\partial h_1}{\partial z_1} = h_1 \cdot (1 - h_1) = 0.68 \cdot (1 - 0.68) \approx 0.2176\)</span></p></li>
+<li><p><strong>How did Hidden Sum (<span class="math inline">\(z_1\)</span>) change as Weight 1 (<span class="math inline">\(w_1\)</span>) changed?</strong></p></li>
+</ol>
+<p><span class="math inline">\(\frac{\partial z_1}{\partial w_1} = x_1 = 0.5\)</span></p>
+<p><strong>The Chain Rule Assembly:</strong></p>
+<p><span class="math inline">\(Gradient_{w_1} = (Error_{h_1}) \cdot (Sigmoid derivative) \cdot (Input x_1)\)</span></p>
+<p><span class="math inline">\(Gradient_{w_1} = -0.075 \cdot 0.2176 \cdot 0.5 \approx -0.00816\)</span></p>
 <hr>
+</section>
+</section>
+<section id="step-3-the-update-fixing-the-machines" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-the-update-fixing-the-machines">Step 3: The Update (Fixing the Machines)</h3>
+<p>Now that we know the gradients (the required direction of change), we apply the fix using a <strong>Learning Rate (<span class="math inline">\(\alpha\)</span>)</strong> of 0.1.</p>
+<p><strong>New Weight 3:</strong></p>
+<p><span class="math inline">\(w_3^{new} = w_3 - (\alpha \cdot Gradient_{w_3}) = 1.0 - 0.1 \cdot (-0.0518) = 1.0 + 0.00518 \approx 1.00518\)</span></p>
+<p><em>(We increase weight 3 slightly to boost the output).</em></p>
+<p><strong>New Weight 1:</strong></p>
+<p><span class="math inline">\(w_1^{new} = w_1 - (\alpha \cdot Gradient_{w_1}) = 0.5 - 0.1 \cdot (-0.00816) = 0.5 + 0.000816 \approx 0.500816\)</span></p>
+<p><em>(We increase weight 1 slightly).</em></p>
+</section>
+<section id="summary-of-the-story" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-the-story">Summary of the Story</h3>
+<ol type="1">
+<li><strong>Forward:</strong> We passed data through to get a result.</li>
+<li><strong>Loss:</strong> We realized the result was too low.</li>
+<li><strong>Chain Rule (Output):</strong> We calculated that increasing would help.</li>
+<li><strong>Chain Rule (Hidden):</strong> We passed that “need for increase” backward through to find out that increasing would also help.</li>
+<li><strong>Update:</strong> We nudged all weights in the beneficial direction. The next time we run this input, the error will be slightly lower.</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

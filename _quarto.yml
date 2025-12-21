@@ -28,6 +28,12 @@ website:
       - icon: map
         text: Connection Map LA
         href: pages/slt/mathematics/linear-algebra/connection-map.qmd
+      - icon: compass
+        text: Gradient Explorer
+        href: pages/slt/mathematics/calculus/gradient-explorer.qmd
+      - icon: book-half
+        text: Backpropagation Storyteller
+        href: pages/slt/mathematics/calculus/back-propagation.qmd
   announcement: 
     icon: info-circle
     dismissable: true

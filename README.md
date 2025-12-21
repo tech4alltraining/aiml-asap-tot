@@ -6,8 +6,8 @@
 - ✅ Assignment 2: [The Analogy Architect](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/linear-algebra/analogy-1.html)
 - ✅ Assignment 3: [The Connection Map](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/linear-algebra/connection-map.html)
 #### Session 3: Engine of Learning
-- ⏳ Assignment 1: The Gradient Explorer
-- ⏳ Assignment 2: The Backpropagation Storyteller
+- ⏳ Assignment 1: [The Gradient Explorer](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/calculus/gradient-explorer.qmd)
+- ⏳ Assignment 2: [The Backpropagation Storyteller](https://tech4alltraining.github.io/aiml-asap-tot/pages/slt/mathematics/calculus/back-propagation.qmd)
 - ⏳ Assignment 3: The Optimization Strategist
 #### Session 4: The Science of Uncertainty
 - ⏳ Assignment 1: The Bayesian Investigator

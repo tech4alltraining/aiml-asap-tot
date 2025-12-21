@@ -1,0 +1,151 @@
+#### Session 3 | Assignment 2| The Backpropagation Storyteller
+
+# The Backpropagation Story: "Passing the Blame"
+
+![back-propagation](images/back-propagation.png)
+
+
+
+### The Scenario: The Mini Neural Network
+
+Imagine a tiny factory (Neural Network) that takes two raw ingredients (Inputs) and tries to produce a specific alloy (Output).
+
+**The Architecture:**
+
+* **Input Layer:** 2 Neurons ($x_1$, $x_2$)
+* **Hidden Layer:** 1 Neuron ($h_1$) with a Sigmoid activation.
+* **Output Layer:** 1 Neuron ($y_{pred}$) with a Sigmoid activation.
+* **Goal:** For inputs **$x_1=0.5, x_2=1.0$**, we want the output to be **1.0**.
+
+---
+
+### Step 1: The Forward Pass (Making the Product)
+
+*The factory runs a test batch to see what it currently produces.*
+
+**1. Initial Weights (Randomly Assigned):**
+
+* Weights from Input to Hidden: $w_1 = 0.5$, $w_2 = 0.5$
+* Weight from Hidden to Output: $w_3 = 1.0$
+
+**2. Hidden Layer Calculation:**
+
+* **Weighted Sum ($z_1$):**
+
+$z_1 = (x_1 \cdot w_1) + (x_2 \cdot w_2) = (0.5 \cdot 0.5) + (1.0 \cdot 0.5) = 0.25 + 0.5 = 0.75$
+
+
+* **Activation ($h_1$):** We apply the Sigmoid function (squashing the value).
+  
+$h_1 = \frac{1}{1 + e^{-z_1}} = \frac{1}{1 + e^{-0.75}} \approx 0.68$
+
+
+**3. Output Layer Calculation:**
+
+* **Weighted Sum ($z_2$):**
+  
+$z_2 = h_1 \cdot w_3 = 0.68 \cdot 1.0 = 0.68$
+
+
+* **Final Prediction ($y_{pred}$):**
+  
+$y_{pred} = \frac{1}{1 + e^{-z_2}} = \frac{1}{1 + e^{-0.68}} \approx 0.66$
+
+
+**4. The Error (The Loss Function):**
+
+* **Target:** 1.0
+* **Actual:** 0.66
+* **Loss (MSE):** $L = \frac{1}{2} (Target - Prediction)^2 = \frac{1}{2} (1.0 - 0.66)^2 = \frac{1}{2} (0.34)^2 = 0.058$
+
+> **The Story:** The factory manager looks at the product. "We wanted a 1.0 quality alloy, but we got 0.66. This is a failure. Who is responsible?"
+
+---
+
+### Step 2: The Backward Pass (Assigning the Blame)
+
+*Now we travel backward from the output to find out how to adjust the machines (weights).*
+
+#### **Phase A: Blaming the Output Weight ($w_3$)**
+
+We need to calculate $ \frac{\partial Loss}{\partial w_3} : "How much did Weight 3 contribute to the error?"
+
+We use the **Chain Rule** to break this into three simple links:
+
+1. **How did the Loss change as the Prediction changed?**
+
+$\frac{\partial Loss}{\partial y_{pred}} = -(Target - y_{pred}) = -(1.0 - 0.66) = -0.34$
+*(Interpretation: We need the output to be higher.)*
+2. **How did the Prediction change as the Input Sum ($z_2$) changed?** (Sigmoid Derivative)
+
+$\frac{\partial y_{pred}}{\partial z_2} = y_{pred} \cdot (1 - y_{pred}) = 0.66 \cdot (1 - 0.66) \approx 0.2244$
+
+3. **How did the Input Sum ($z_2$) change as Weight 3 changed?**
+
+$\frac{\partial z_2}{\partial w_3} = h_1 = 0.68$
+
+
+**The Chain Rule Assembly:**
+
+$Gradient_{w_3} = \frac{\partial Loss}{\partial w_3} = \frac{\partial Loss}{\partial y_{pred}} \cdot \frac{\partial y_{pred}}{\partial z_2} \cdot \frac{\partial z_2}{\partial w_3}$
+
+$= -0.34 \cdot 0.2244 \cdot 0.68 \approx -0.0518$
+
+
+> **The Story:** "Weight 3, you are partly to blame. If we increase you, the error will go down."
+
+---
+
+#### **Phase B: Passing the Blame Back (To $w_1$ and $w_2$)**
+
+This is the "Back" in Backpropagation. The output layer neuron yells at the hidden neuron: *"I only gave the wrong answer because YOU gave me the wrong input!"*
+
+We need $ \frac{\partial Loss}{\partial w_1} $ and $ \frac{\partial Loss}{\partial w_2} $. The Chain Rule gets longer:
+
+
+1. **The "Upstream Gradient" (Blame from the Output):**
+We already calculated the error sensitivity at the output sum: $(-0.34 \cdot 0.2244)=-0.075$.
+Now we multiply it by the weight connecting them ($w_3$) to bring the error back to the hidden node.
+
+Error at $h_1$ = $-0.075 \cdot w_3 = -0.075 \cdot 1.0 = -0.075$
+
+1. **How did Hidden Output ($h_1$) change as Hidden Sum ($z_1$) changed?** (Sigmoid Derivative again)
+$\frac{\partial h_1}{\partial z_1} = h_1 \cdot (1 - h_1) = 0.68 \cdot (1 - 0.68) \approx 0.2176$
+
+
+2. **How did Hidden Sum ($z_1$) change as Weight 1 ($w_1$) changed?**
+
+$\frac{\partial z_1}{\partial w_1} = x_1 = 0.5$
+
+**The Chain Rule Assembly:**
+
+$Gradient_{w_1} = (Error_{h_1}) \cdot (Sigmoid derivative) \cdot (Input x_1)$
+
+$Gradient_{w_1} = -0.075 \cdot 0.2176 \cdot 0.5 \approx -0.00816$
+
+
+---
+
+### Step 3: The Update (Fixing the Machines)
+
+Now that we know the gradients (the required direction of change), we apply the fix using a **Learning Rate ($\alpha$)** of 0.1.
+
+**New Weight 3:**
+
+$w_3^{new} = w_3 - (\alpha \cdot Gradient_{w_3}) = 1.0 - 0.1 \cdot (-0.0518) = 1.0 + 0.00518 \approx 1.00518$
+
+*(We increase weight 3 slightly to boost the output).*
+
+**New Weight 1:**
+
+$w_1^{new} = w_1 - (\alpha \cdot Gradient_{w_1}) = 0.5 - 0.1 \cdot (-0.00816) = 0.5 + 0.000816 \approx 0.500816$
+
+*(We increase weight 1 slightly).*
+
+### Summary of the Story
+
+1. **Forward:** We passed data through to get a result.
+2. **Loss:** We realized the result was too low.
+3. **Chain Rule (Output):** We calculated that increasing  would help.
+4. **Chain Rule (Hidden):** We passed that "need for increase" backward through  to find out that increasing  would also help.
+5. **Update:** We nudged all weights in the beneficial direction. The next time we run this input, the error will be slightly lower.

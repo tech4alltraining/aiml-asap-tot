@@ -1,0 +1,209 @@
+#### Session 3 | Assignment 1| The Gradient Explorer
+
+![gradient-explorer](images/gradient.png)
+
+## **🎯 Objective: Visualizing Gradient Descent in Linear Regression**
+We will focus on a simple Linear Regression problem using the Iris dataset (predicting Petal Width from Petal Length) to keep the visualizations 2D and interpretable.
+
+### **The Gradient Explorer: Visualizing Learning**
+
+This solution includes the mathematical derivation, the Python implementation, and a comprehensive breakdown of the resulting visualizations.
+
+---
+
+### **1. The Mathematical Setup**
+
+We are transforming a static model into a dynamic learner using the "Hiker in the Fog" analogy.
+
+* **The Model (The Hiker's Position):** $\hat{y} = w \cdot x + b$
+    
+  Where:
+   * $w$: Weight (Slope)
+   * $b$: Bias (Intercept)
+
+
+* **The Loss Function (The Landscape Height):** Mean Squared Error (MSE)
+  
+    $J(w, b) = \frac{1}{N} \sum_{i=1}^{N} (y_i - (w \cdot x_i + b))^2$
+
+   Where: 
+    * $N$: Number of data points
+    * $y_i$: Actual value
+    * $\hat{y}_i$: Predicted value
+
+* **The Gradient (The Slope under foot):**
+  
+  $\frac{\partial J}{\partial w} = -\frac{2}{N} \sum_{i=1}^{N} x_i (y_i - \hat{y}_i)$
+
+  $\frac{\partial J}{\partial b} = -\frac{2}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)$
+
+* **The Update Rule (The Step):**
+  
+  $w_{new} = w_{old} - \alpha \cdot \frac{\partial J}{\partial w}$
+
+  $b_{new} = b_{old} - \alpha \cdot \frac{\partial J}{\partial b}$
+  
+  Where:
+  * $\alpha$: Learning Rate (Step Size)
+  * $w_{old}, b_{old}$: Current parameters
+  * $w_{new}, b_{new}$: Updated parameters
+
+---
+
+### **2. Python Implementation**
+
+This code implements Gradient Descent from scratch and generates the requested visualizations: the Loss Surface and the Gradient Path.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import datasets
+
+# 1. Load Data (Iris Dataset)
+# We will predict Petal Width (y) based on Petal Length (x)
+iris = datasets.load_iris()
+x_data = iris.data[:, 2]  # Petal Length
+y_data = iris.data[:, 3]  # Petal Width
+
+# Standardize data for better gradient descent convergence
+x_data = (x_data - np.mean(x_data)) / np.std(x_data)
+y_data = (y_data - np.mean(y_data)) / np.std(y_data)
+
+# 2. Define Functions
+def compute_loss(w, b, x, y):
+    """Mean Squared Error"""
+    N = len(y)
+    prediction = w * x + b
+    loss = (1/N) * np.sum((y - prediction)**2)
+    return loss
+
+def compute_gradients(w, b, x, y):
+    """Calculates partial derivatives w.r.t w and b"""
+    N = len(y)
+    prediction = w * x + b
+    # Derivative w.r.t w: mean of -2 * x * error
+    dw = (-2/N) * np.sum(x * (y - prediction))
+    # Derivative w.r.t b: mean of -2 * error
+    db = (-2/N) * np.sum(y - prediction)
+    return dw, db
+
+def gradient_descent(x, y, start_w, start_b, learning_rate, iterations):
+    w, b = start_w, start_b
+    history = []
+    
+    for i in range(iterations):
+        loss = compute_loss(w, b, x, y)
+        dw, db = compute_gradients(w, b, x, y)
+        
+        # Store history for visualization
+        history.append({'w': w, 'b': b, 'loss': loss})
+        
+        # The Update Rule
+        w = w - learning_rate * dw
+        b = b - learning_rate * db
+        
+    return w, b, history
+
+# 3. Run Experiments with Different Learning Rates
+# Start at a "bad" random point to see the journey
+start_w, start_b = -2.0, -2.0 
+iterations = 50
+
+lr_small = 0.05
+_, _, hist_small = gradient_descent(x_data, y_data, start_w, start_b, lr_small, iterations)
+
+lr_large = 0.9
+_, _, hist_large = gradient_descent(x_data, y_data, start_w, start_b, lr_large, iterations)
+
+# 4. Visualization
+# Create the meshgrid for the Loss Surface
+w_range = np.linspace(-3, 3, 100)
+b_range = np.linspace(-3, 3, 100)
+W, B = np.meshgrid(w_range, b_range)
+Loss_Surface = np.zeros_like(W)
+
+for i in range(W.shape[0]):
+    for j in range(W.shape[1]):
+        Loss_Surface[i, j] = compute_loss(W[i, j], B[i, j], x_data, y_data)
+
+# Plotting
+fig = plt.figure(figsize=(14, 6))
+
+# Plot 1: The Loss Surface and Gradient Path (Learning Rate = 0.1)
+ax1 = fig.add_subplot(1, 2, 1, projection='3d')
+ax1.plot_surface(W, B, Loss_Surface, cmap='viridis', alpha=0.6)
+ax1.set_title(f'Gradient Descent Path (LR={lr_small})\n"Controlled Descent"')
+ax1.set_xlabel('Weight (w)')
+ax1.set_ylabel('Bias (b)')
+ax1.set_zlabel('Loss')
+
+# Extract path data
+w_path = [h['w'] for h in hist_small]
+b_path = [h['b'] for h in hist_small]
+loss_path = [h['loss'] for h in hist_small]
+ax1.plot(w_path, b_path, loss_path, color='red', marker='o', markersize=4, label='Path')
+
+# Plot 2: Contour Map comparison (Small vs Large LR)
+ax2 = fig.add_subplot(1, 2, 2)
+ax2.contour(W, B, Loss_Surface, levels=20, cmap='viridis')
+ax2.set_title('Top-Down View: Impact of Learning Rate')
+ax2.set_xlabel('Weight (w)')
+ax2.set_ylabel('Bias (b)')
+
+# Plot Small LR Path
+ax2.plot(w_path, b_path, color='red', marker='o', markersize=3, label=f'LR={lr_small} (Steady)')
+
+# Plot Large LR Path
+w_path_l = [h['w'] for h in hist_large]
+b_path_l = [h['b'] for h in hist_large]
+ax2.plot(w_path_l, b_path_l, color='orange', marker='x', linestyle='--', label=f'LR={lr_large} (Overshooting)')
+
+ax2.legend()
+plt.tight_layout()
+plt.show()
+
+```
+
+---
+
+### **3. Analysis of the Visualizations**
+
+#### **A. The Loss Surface (The "Landscape")**
+
+The 3D plot visualizes the "Convex" nature of the Linear Regression loss function.
+
+* **Shape:** It looks like a bowl or a valley. This confirms that there is one single "Global Minimum"—the bottom of the bowl where the loss is lowest.
+* **Coordinates:** Every point on this surface represents a specific combination of  (slope) and  (intercept).
+* **Height (Z-axis):** Represents the Error. High points are "bad" models; low points are "good" models.
+
+#### **B. The Gradient Path (The "Hiker")**
+
+The red line traces the history of the model's learning.
+
+* **Starting Point:** The path begins at , high up on the rim of the bowl. The error is high because the parameters are random.
+* **The Trajectory:** Notice that the path moves **perpendicular** to the contour lines. This visualizes the gradient property: pointing in the direction of steepest descent.
+* **The Steps:** The points are far apart at the beginning (where the slope is steep) and get closer together as they reach the bottom (where the slope flattens out). This shows how the gradient magnitude naturally slows down the learning as we approach the solution.
+
+#### **C. The Effect of Learning Rate (LR)**
+
+The 2D Contour plot compares two different "Hikers":
+
+1. **Red Path (LR = 0.05 - "Just Right"):**
+* This path moves steadily and directly toward the center (the minimum).
+* It efficiently navigates the valley floor.
+
+
+2. **Orange Path (LR = 0.9 - "Too Large"):**
+* This path zig-zags violently.
+* It overshoots the valley floor, jumping from one wall of the canyon to the other.
+* **Interpretation:** The "steps" were so big that the hiker missed the bottom and accidentally stepped up the slope on the other side. This illustrates why tuning the learning rate is critical for stability.
+
+
+
+### **Connection to AI Domains**
+
+This simple "Gradient Explorer" visualizes the exact same mechanism used in massive neural networks:
+
+* **Computer Vision:** The "landscape" is non-convex and millions of dimensions, but the "hiker" (Optimizer) still follows the gradient downhill.
+* **NLP (Transformers):** The "Attention Mechanism" gradients direct the hiker toward which words matter most.
+* **Recommender Systems:** Matrix Factorization uses this same alternating gradient descent to minimize the difference between predicted ratings and actual user preferences.
